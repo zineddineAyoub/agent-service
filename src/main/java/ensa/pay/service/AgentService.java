@@ -3,12 +3,11 @@ package ensa.pay.service;
 import ensa.pay.Repository.AgencyRepository;
 import ensa.pay.Repository.AgentRepository;
 import ensa.pay.Repository.FilesRepository;
-import ensa.pay.models.Agency;
-import ensa.pay.models.Agent;
-import ensa.pay.models.Files;
+import ensa.pay.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,7 +22,24 @@ public class AgentService {
     @Autowired
     private AgencyRepository agencyRepository;
 
+    @Autowired
+    private OauthService oauthService;
+
     public Agent saveOrUpdate(Agent agent, Files file){
+        User user = new User();
+        user.setTel(agent.getPhone_number());
+        user.setPassword("azerty");
+
+        Role role = new Role();
+        role.setName("Agent");
+        role.setDescription("Responsible for creating users");
+        List<Role> listRole = new ArrayList<>();
+        listRole.add(role);
+        user.setRoles(listRole);
+
+        oauthService.createUser(user);
+        System.out.println(oauthService.getAll());
+
         Agent new_agent = this.agentRepository.save(agent);
         String id_agent = new_agent.getId();
         file.setId_agent(id_agent);
@@ -44,6 +60,13 @@ public class AgentService {
             }
         }
         return listAgents;
+    }
+
+    public Agent getAgentByTel(String tel){
+        Agent agent = agentRepository.findByPhoneNumber(tel);
+        Agency agency = agencyRepository.findById(agent.getId_agence()).orElse(null);
+        agent.setAgency(agency);
+        return agent;
     }
 
     public Agent findById(String id_agent){

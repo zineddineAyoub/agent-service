@@ -17,7 +17,7 @@ public class Agency {
 	@Id
 	private String id;
 	
-	private String name_agence;
+	private String name;
 	
 	private String address;
 

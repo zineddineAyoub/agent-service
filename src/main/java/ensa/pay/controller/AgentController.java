@@ -46,11 +46,15 @@ public class AgentController {
 	public Agent getAgentById(@PathVariable String id_agent)
 	{
 		return this.agentService.findById(id_agent);
-		
+	}
+	
+	@GetMapping("/get/{tel}")
+	public Agent getAgentByTel(@PathVariable String tel){
+		return agentService.getAgentByTel(tel);
 	}
 	
 	@DeleteMapping("/{id_agent}")
-	public String deleteProduct(@PathVariable String id_agent)
+	public String deleteAgent(@PathVariable String id_agent)
 	{
 		 this.agentService.delete(id_agent);
 		 return "Deleted";
