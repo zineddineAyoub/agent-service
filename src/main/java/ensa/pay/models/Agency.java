@@ -7,6 +7,8 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +18,11 @@ public class Agency {
 	
 	@Id
 	private String id;
-	
+
+	@NotNull(message = "Agency name must not be null")
 	private String name;
-	
+
+	@NotNull(message = "Agency address must not be null")
 	private String address;
 
 	/*

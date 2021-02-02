@@ -28,19 +28,19 @@ public class Agent {
 	
 	private String identity_document;
 	
-	private Date birth_day;
+	private String birth_day;
 	
 	private String phone_number;
 	
-	private long patente_number;
+	private String patente_number;
 	
-	private int identity_number;
+	private String identity_number;
 	
 	private String address;
 	
 	private String email;
 	
-	private long commerce_registration;
+	private String commerce_registration;
 	
 	private String password;
 

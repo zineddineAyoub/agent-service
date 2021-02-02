@@ -1,27 +1,16 @@
 package ensa.pay.controller;
 
 import java.util.List;
-import java.util.Optional;
 
-import ensa.pay.Repository.AgencyRepository;
-import ensa.pay.models.Agency;
+import ensa.pay.models.Files;
 import ensa.pay.service.AgentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
-import ensa.pay.Repository.AgentRepository;
-import ensa.pay.Repository.FilesRepository;
 import ensa.pay.models.Agent;
-import ensa.pay.models.Files;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("agent")
@@ -32,8 +21,16 @@ public class AgentController {
 	
 
 	@PostMapping( consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-	public Agent insertAgent(Agent agent, Files file) {
-		return this.agentService.saveOrUpdate(agent,file);
+	public Agent insertAgent(Agent agent,Files files) {
+
+		/*if(files==null){
+			System.out.println("this is null");
+					return null;
+		}*/
+			//System.out.println("not null haha");
+			//System.out.println(files);
+		//return files;
+		return this.agentService.saveOrUpdate(agent,files);
 	}
 
 	
@@ -54,12 +51,15 @@ public class AgentController {
 	}
 	
 	@DeleteMapping("/{id_agent}")
-	public String deleteAgent(@PathVariable String id_agent)
+	public void deleteAgent(@PathVariable String id_agent)
 	{
 		 this.agentService.delete(id_agent);
-		 return "Deleted";
 		
 	}
 
+	@DeleteMapping("/file/{id_file}")
+	public void deletefile(@PathVariable String id_file){
+		this.agentService.deleteFile(id_file);
+	}
 
 }

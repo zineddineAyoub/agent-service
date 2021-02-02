@@ -19,7 +19,7 @@ public class AgencyService {
     @Autowired
     private AgentRepository agentRepository;
 
-    @Autowired
+   // @Autowired
     private OauthService oauthService;
 
     public Agency saveOrUpdate(Agency agency){
