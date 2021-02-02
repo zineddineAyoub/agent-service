@@ -64,7 +64,9 @@ public class AgentService {
 
     public Agent getAgentByTel(String tel){
         Agent agent = agentRepository.findByPhoneNumber(tel);
+        System.out.println("this is agent "+agent);
         Agency agency = agencyRepository.findById(agent.getId_agence()).orElse(null);
+        System.out.println("this is agency "+agency);
         agent.setAgency(agency);
         return agent;
     }
