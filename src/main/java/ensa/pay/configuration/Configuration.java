@@ -11,15 +11,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @org.springframework.context.annotation.Configuration
 public class Configuration extends WebMvcConfigurerAdapter {
-    @Bean
-    public ValidatingMongoEventListener validatingMongoEventListener() {
+
+   // @Bean
+   /* public ValidatingMongoEventListener validatingMongoEventListener() {
         return new ValidatingMongoEventListener(validator());
     }
 
     @Bean
     public LocalValidatorFactoryBean validator() {
         return new LocalValidatorFactoryBean();
-    }
+    }*/
 
     private final static Logger LOGGER = LoggerFactory.getLogger(Configuration.class);
 
