@@ -32,9 +32,9 @@ public class Agent {
 	
 	private String phone_number;
 	
-	private String patente_number;
+	private int patente_number;
 	
-	private String identity_number;
+	private int identity_number;
 	
 	private String address;
 	
