@@ -22,8 +22,8 @@ public class AgentService {
     @Autowired
     private AgencyRepository agencyRepository;
 
-    @Autowired
-    private OauthService oauthService;
+   // @Autowired
+    //private OauthService oauthService;
 
     public Agent saveOrUpdate(Agent agent, Files file){
         User user = new User();
@@ -37,8 +37,8 @@ public class AgentService {
         listRole.add(role);
         user.setRoles(listRole);
 
-        oauthService.createUser(user);
-        System.out.println(oauthService.getAll());
+        //oauthService.createUser(user);
+        //System.out.println(oauthService.getAll());
 
         Agent new_agent = this.agentRepository.save(agent);
         String id_agent = new_agent.getId();
@@ -81,6 +81,10 @@ public class AgentService {
         this.filesRepository.deleteById_agent(id_agent);
         this.agentRepository.deleteById(id_agent);
 
+    }
+
+    public void deleteFile(String id_file){
+        this.filesRepository.deleteById(id_file);
     }
 
 }

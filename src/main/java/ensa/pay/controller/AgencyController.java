@@ -12,6 +12,7 @@ import ensa.pay.models.Agency;
 
 @RestController
 @RequestMapping("agency")
+@CrossOrigin(origins = "*")
 public class AgencyController {
 
 	@Autowired
