@@ -24,6 +24,11 @@ public class Agency {
 	//@NotNull(message = "Agency address must not be null")
 	private String address;
 
+	public Agency(String name, String address) {
+		this.name = name;
+		this.address = address;
+	}
+
 	/*
 	public Agence() { }
 
