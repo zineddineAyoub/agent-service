@@ -64,9 +64,7 @@ public class AgentService {
 
     public Agent getAgentByTel(String tel){
         Agent agent = agentRepository.findByPhoneNumber(tel);
-        System.out.println("this is agent "+agent);
         Agency agency = agencyRepository.findById(agent.getId_agence()).orElse(null);
-        System.out.println("this is agency "+agency);
         agent.setAgency(agency);
         return agent;
     }
@@ -82,7 +80,6 @@ public class AgentService {
     public void delete(String id_agent){
         this.filesRepository.deleteById_agent(id_agent);
         this.agentRepository.deleteById(id_agent);
-
     }
 
     public void deleteFile(String id_file){

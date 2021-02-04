@@ -39,9 +39,9 @@ public class AgencyController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public String delete(@PathVariable String id) {
+	public void delete(@PathVariable String id) {
 		this.agencyService.delete(id);
-		return "Agence Deleted Successfully";
+
 	}
 	
 }

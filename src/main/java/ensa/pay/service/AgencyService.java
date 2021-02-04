@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AgencyService {
@@ -36,6 +37,10 @@ public class AgencyService {
         return this.agencyRepository.findById(id).orElse(new Agency());
     }
 
+    public Optional<Agency> getAgencyById(String id){
+        return this.agencyRepository.findById(id);
+    }
+
     public void delete(String id){
         this.agencyRepository.deleteById(id);
     }
@@ -43,7 +48,6 @@ public class AgencyService {
     public Agency findByPhoneNumber(String phoneNumber){
         Agent agent =  this.agentRepository.findByPhoneNumber(phoneNumber);
         return agencyRepository.findById(agent.getId_agence()).orElse(null);
-
     }
 
 }
