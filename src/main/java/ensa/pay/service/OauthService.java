@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name="user-service",url="http://ensaspay-zuul-gateway.herokuapp.com/oauth/api/user")
+//@FeignClient(name="user-service",url="http://ensaspay-zuul-gateway.herokuapp.com/oauth/api/user")
 @Service
 public interface OauthService {
 
