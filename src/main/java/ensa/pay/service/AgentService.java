@@ -37,7 +37,7 @@ public class AgentService {
         listRole.add(role);
         user.setRoles(listRole);
 
-        oauthService.createUser(user);
+        //oauthService.createUser(user);
         //System.out.println(oauthService.getAll());
 
         Agent new_agent = this.agentRepository.save(agent);
