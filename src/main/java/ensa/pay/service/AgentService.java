@@ -22,8 +22,8 @@ public class AgentService {
     @Autowired
     private AgencyRepository agencyRepository;
 
-    @Autowired
-    private OauthService oauthService;
+   // @Autowired
+    //private OauthService oauthService;
 
     public Agent saveOrUpdate(Agent agent, Files file){
         User user = new User();
