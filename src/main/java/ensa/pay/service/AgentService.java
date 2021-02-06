@@ -22,13 +22,13 @@ public class AgentService {
     @Autowired
     private AgencyRepository agencyRepository;
 
-   // @Autowired
-    //private OauthService oauthService;
+    @Autowired
+    private OauthService oauthService;
 
     public Agent saveOrUpdate(Agent agent, Files file){
         User user = new User();
         user.setTel(agent.getPhone_number());
-        user.setPassword("azerty");
+        user.setPassword("123");
 
         Role role = new Role();
         role.setName("Agent");
@@ -37,7 +37,7 @@ public class AgentService {
         listRole.add(role);
         user.setRoles(listRole);
 
-        //oauthService.createUser(user);
+        oauthService.createUser(user);
         //System.out.println(oauthService.getAll());
 
         Agent new_agent = this.agentRepository.save(agent);
