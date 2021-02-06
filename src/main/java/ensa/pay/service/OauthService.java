@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-//@FeignClient(name="oauth-demo",url="http://localhost:9090/api/user")
+@FeignClient(name="user-service",url="http://ensaspay-zuul-gateway.herokuapp.com/oauth/api/user")
 @Service
 public interface OauthService {
 
 
- //   @PostMapping("/create")
+    @PostMapping("/create")
     public User createUser(@RequestBody User user);
 
-   // @GetMapping("/get/{tel}")
+    @GetMapping("/get/{tel}")
     public User findUserByLogin(@PathVariable String tel);
 
-    // @GetMapping("/getAll")
+     @GetMapping("/getAll")
     public List<User> getAll();
 
 }
